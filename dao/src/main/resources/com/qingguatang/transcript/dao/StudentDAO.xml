@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qingguatang.transcript.dao.StudentDAO">
   <resultMap id="BaseResultMap" type="com.qingguatang.transcript.dataobject.StudentDO">
-    <id column="id" jdbcType="VARCHAR" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="gender" jdbcType="VARCHAR" property="gender" />
     <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
@@ -15,21 +15,20 @@
   <insert id="insert" parameterType="com.qingguatang.transcript.dataobject.StudentDO">
     insert into ts_student (id, name, gender, 
       gmt_created, gmt_modified)
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
-      #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+    values (#{id}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR},
+      now(),  now())
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.qingguatang.transcript.dataobject.StudentDO">
     update ts_student
     set name = #{name,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=VARCHAR},
-      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      gmt_modified = now()
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select id, name, gender, gmt_created, gmt_modified
     from ts_student
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, gender, gmt_created, gmt_modified

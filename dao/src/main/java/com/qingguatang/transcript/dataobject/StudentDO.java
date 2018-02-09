@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class StudentDO {
     /**主键*/
-    private String id;
+    private Long id;
 
     /**名称*/
     private String name;
@@ -19,12 +19,12 @@ public class StudentDO {
     private Date gmtModified;
 
     /**获取主键*/
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
     /**设置主键*/
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
