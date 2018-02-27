@@ -13,4 +13,11 @@
     from ts_course
     where id = #{id,jdbcType=BIGINT}
   </select>
+
+  <select id="selectByNameAndGmt"  resultMap="BaseResultMap">
+    select id, gmt_created, gmt_modified, name
+    from ts_course
+    where name = #{name} and gmt_created>#{time}
+  </select>
+
 </mapper>
