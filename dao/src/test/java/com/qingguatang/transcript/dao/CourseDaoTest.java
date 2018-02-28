@@ -3,8 +3,10 @@ package com.qingguatang.transcript.dao;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.qingguatang.transcript.dataobject.CourseDO;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
@@ -25,6 +27,33 @@ public class CourseDaoTest {
 
   @Autowired
   private CourseDAO courseDAO;
+
+
+  @Test
+  public void insertTest() {
+    CourseDO courseDO = new CourseDO();
+    courseDO.setId(System.currentTimeMillis());
+    courseDO.setName("qgt");
+    int size = courseDAO.insert(courseDO);
+    //预期结果大于0
+    assertThat(size).isGreaterThan(0);
+  }
+
+  @Test
+  public void batchInsertTest() {
+
+    List<CourseDO> courseDOList = new ArrayList<>();
+
+    CourseDO courseDO = new CourseDO();
+    courseDO.setId(System.currentTimeMillis());
+    courseDO.setName("qgt");
+    courseDOList.add(courseDO);
+
+    int size = courseDAO.bathInsert(courseDOList);
+    //预期结果大于0
+    assertThat(size).isGreaterThan(0);
+  }
+
 
   @Test
   public void getTest() {

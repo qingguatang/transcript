@@ -2,6 +2,7 @@ package com.qingguatang.transcript.dao;
 
 import com.qingguatang.transcript.dataobject.CourseDO;
 import java.util.Date;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,6 +11,21 @@ import org.apache.ibatis.annotations.Param;
  */
 @Mapper
 public interface CourseDAO {
+
+  /**
+   * 插入记录
+   * @param courseDO
+   * @return
+   */
+  int insert(CourseDO courseDO);
+
+
+  /**
+   * 批量插入记录
+   * @param courseDOs
+   * @return
+   */
+  int bathInsert(List<CourseDO> courseDOs);
 
   /**
    * 根据课程ID查询课程数据

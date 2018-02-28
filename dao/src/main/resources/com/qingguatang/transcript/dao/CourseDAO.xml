@@ -7,6 +7,19 @@
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
+
+  <insert id="insert" parameterType="com.qingguatang.transcript.dataobject.CourseDO">
+    INSERT  INTO ts_course (id, gmt_created, gmt_modified, name)
+      VALUES (#{id},now(),now(),#{name})
+  </insert>
+
+  <insert id="bathInsert">
+    insert into ts_course (`id` ,`gmt_created` ,`gmt_modified` ,`name`) values
+    <foreach item="item" collection="list" separator=",">
+      (#{item.id}, now(), now(), #{item.name})
+    </foreach>
+  </insert>
+
   <!--根据Id查询 对象 -->
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select id, gmt_created, gmt_modified, name
