@@ -13,6 +13,20 @@ import org.apache.ibatis.annotations.Param;
 public interface CourseDAO {
 
   /**
+   * 修改
+   * @param courseDO
+   * @return
+   */
+  int update(CourseDO courseDO);
+
+  /**
+   * 根据ID删除数据
+   * @param id
+   * @return
+   */
+  int deleteById(long id);
+
+  /**
    * 插入记录
    * @param courseDO
    * @return

@@ -8,6 +8,9 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
 
+  <delete id="deleteById" parameterType="java.lang.Long">
+    DELETE FROM ts_course where id =#{id}
+  </delete>
   <insert id="insert" parameterType="com.qingguatang.transcript.dataobject.CourseDO">
     INSERT  INTO ts_course (id, gmt_created, gmt_modified, name)
       VALUES (#{id},now(),now(),#{name})
@@ -19,6 +22,13 @@
       (#{item.id}, now(), now(), #{item.name})
     </foreach>
   </insert>
+
+  <update id="update"  parameterType="com.qingguatang.transcript.dataobject.CourseDO" >
+    UPDATE ts_course
+      set name='${@com.qingguatang.transcript.util.StringUtil@format(name)}',
+      gmt_modified = now()
+      where id =#{id}
+  </update>
 
   <!--根据Id查询 对象 -->
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">

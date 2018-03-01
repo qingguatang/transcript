@@ -40,6 +40,39 @@ public class CourseDaoTest {
   }
 
   @Test
+  public void updateTest() {
+    CourseDO courseDO = new CourseDO();
+    courseDO.setId(System.currentTimeMillis());
+    courseDO.setName("qgt");
+    int size = courseDAO.insert(courseDO);
+    //预期结果大于0
+    assertThat(size).isGreaterThan(0);
+
+    courseDO.setName("qgttest  ");
+    size = courseDAO.update(courseDO);
+    assertThat(size).isGreaterThan(0);
+
+    //再来查询一下
+    courseDO = courseDAO.selectByPrimaryKey(courseDO.getId());
+    assertThat(courseDO.getName()).isEqualTo("QGT-qgttest");
+
+  }
+
+
+  @Test
+  public void deleteTest() {
+    CourseDO courseDO = new CourseDO();
+    courseDO.setId(System.currentTimeMillis());
+    courseDO.setName("qgt");
+    courseDAO.insert(courseDO);
+
+    int size = courseDAO.deleteById(courseDO.getId());
+
+    //预期结果大于0
+    assertThat(size).isGreaterThan(0);
+  }
+
+  @Test
   public void batchInsertTest() {
 
     List<CourseDO> courseDOList = new ArrayList<>();
