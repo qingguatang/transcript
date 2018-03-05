@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingguatang.transcript.dao.StudentResultDAO">
+  <resultMap id="BaseResultMap" type="com.qingguatang.transcript.dataobject.StudentResultDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="student_course_id" jdbcType="BIGINT" property="studentCourseId" />
+    <result column="score" jdbcType="DOUBLE" property="score" />
+    <result column="testTime" jdbcType="TIMESTAMP" property="testtime" />
+  </resultMap>
+  <delete id="delete" parameterType="java.lang.Long">
+    delete from ts_result
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qingguatang.transcript.dataobject.StudentResultDO">
+    insert into ts_result (id, gmt_created, gmt_modified, 
+      student_course_id, score, testTime
+      )
+    values (#{id,jdbcType=BIGINT}, now(), now(),
+      #{studentCourseId,jdbcType=BIGINT}, #{score,jdbcType=DOUBLE}, #{testtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="batchInsert">
+    insert into ts_result (id, gmt_created, gmt_modified,
+    student_course_id, score, testTime
+    )
+    values
+     <foreach collection="list" item="item" separator=",">
+       (#{item.id,jdbcType=BIGINT}, now(), now(),
+       #{item.studentCourseId,jdbcType=BIGINT}, #{item.score,jdbcType=DOUBLE}, #{item.testtime,jdbcType=TIMESTAMP}
+       )
+     </foreach>
+  </insert>
+  <update id="update" parameterType="com.qingguatang.transcript.dataobject.StudentResultDO">
+    update ts_result
+    set
+      gmt_modified = now(),
+      student_course_id = #{studentCourseId,jdbcType=BIGINT},
+      score = #{score,jdbcType=DOUBLE},
+      testTime = #{testtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
