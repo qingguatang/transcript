@@ -8,7 +8,7 @@
     <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="delete" parameterType="java.lang.String">
     delete from ts_student
     where id = #{id,jdbcType=VARCHAR}
   </delete>
@@ -18,20 +18,23 @@
     values (#{id}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR},
       now(),  now())
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.qingguatang.transcript.dataobject.StudentDO">
+
+  <insert id="batchInsert">
+    insert into ts_student (id, name, gender,
+    gmt_created, gmt_modified)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id}, #{item.name,jdbcType=VARCHAR}, #{item.gender,jdbcType=VARCHAR},
+      now(),  now())
+    </foreach>
+
+  </insert>
+
+  <update id="update" parameterType="com.qingguatang.transcript.dataobject.StudentDO">
     update ts_student
     set name = #{name,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=VARCHAR},
       gmt_modified = now()
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select id, name, gender, gmt_created, gmt_modified
-    from ts_student
-    where id = #{id}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, gender, gmt_created, gmt_modified
-    from ts_student
-  </select>
 </mapper>
