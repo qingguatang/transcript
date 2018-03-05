@@ -6,13 +6,22 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface StudentDAO {
-    int deleteByPrimaryKey(String id);
 
-    int insert(StudentDO record);
+  int delete(String id);
 
-    StudentDO selectByPrimaryKey(String id);
+  /**
+   * 插入记录
+   */
+  int insert(StudentDO record);
 
-    List<StudentDO> selectAll();
+  /**
+   * 批量插入
+   */
+  int batchInsert(List<StudentDO> records);
 
-    int updateByPrimaryKey(StudentDO record);
+
+  /**
+   * 修改学生记录
+   */
+  int update(StudentDO record);
 }

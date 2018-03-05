@@ -1,17 +1,15 @@
 package com.qingguatang.transcript.model;
 
 /**
- * 学生模型
+ * 课程模型
  * @author joe
- * @date 2018/2/5
+ * @date 2018/3/5
  */
-public class Student {
+public class Course {
 
   private long id;
-  //学生名称
+  //课程名称
   private String name;
-  //学生性别
-  private String gender;
 
   public long getId() {
     return id;
@@ -27,13 +25,5 @@ public class Student {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public String getGender() {
-    return gender;
-  }
-
-  public void setGender(String gender) {
-    this.gender = gender;
   }
 }
