@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingguatang.transcript.dao.StudentCourseResultDAO">
+  <resultMap id="BaseResultMap" type="com.qingguatang.transcript.dataobject.StudentCourseResultDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="course_id" jdbcType="BIGINT" property="courseId" />
+    <result column="student_id" jdbcType="BIGINT" property="studentId" />
+  </resultMap>
+  <delete id="deleteByCourseId" parameterType="java.lang.Long">
+    delete from ts_student_course
+    where course_id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qingguatang.transcript.dataobject.StudentCourseResultDO">
+    insert into ts_student_course (id, gmt_created, gmt_modified, 
+      course_id, student_id)
+    values (#{id,jdbcType=BIGINT}, now(), now(),
+      #{courseId,jdbcType=BIGINT}, #{studentId,jdbcType=BIGINT})
+  </insert>
+</mapper>
