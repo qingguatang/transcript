@@ -2,8 +2,9 @@ package com.qingguatang.transcript.dao;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.qingguatang.transcript.dataobject.StudentDO;
 import com.qingguatang.transcript.dataobject.StudentResultDO;
+import com.qingguatang.transcript.dataobject.StudentResultResponse;
+import com.qingguatang.transcript.model.StudentResultQueryParam;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,9 +43,26 @@ public class StudentResultDaoTest {
     studentResultDO.setTesttime(new Date());
     studentResultDOS.add(studentResultDO);
 
-    int result =studentResultDAO.batchInsert(studentResultDOS);
+    int result = studentResultDAO.batchInsert(studentResultDOS);
     assertThat(result > 0);
 
   }
+
+  @Test
+  public void queryTest() {
+    StudentResultQueryParam queryParam = new StudentResultQueryParam();
+    // 不及格的人数
+    //queryParam.setPassed(false);
+    //queryParam.setOrderByAttr("score");
+    //queryParam.setSortOrder("asc");
+    List<StudentResultResponse> resultResponses = studentResultDAO.query(queryParam);
+    //第一个分数大于第二个
+   // assertThat(resultResponses.get(0).getScore()).isGreaterThan(resultResponses.get(1).getScore());
+    //没有不及格人数
+    // assertThat(resultResponses.size()).isEqualTo(0);
+    //默认记录是2
+    assertThat(resultResponses.size()).isEqualTo(2);
+  }
+
 
 }

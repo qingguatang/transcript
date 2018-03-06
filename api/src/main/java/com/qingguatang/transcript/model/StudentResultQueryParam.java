@@ -20,7 +20,7 @@ public class StudentResultQueryParam {
   /**
    * 课程ID
    */
-  private long couseId;
+  private long courseId;
 
   /**
    * 排序字段
@@ -47,12 +47,12 @@ public class StudentResultQueryParam {
     this.passed = passed;
   }
 
-  public long getCouseId() {
-    return couseId;
+  public long getCourseId() {
+    return courseId;
   }
 
-  public void setCouseId(long couseId) {
-    this.couseId = couseId;
+  public void setCourseId(long courseId) {
+    this.courseId = courseId;
   }
 
   public String getOrderByAttr() {

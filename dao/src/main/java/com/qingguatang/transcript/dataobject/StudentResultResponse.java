@@ -11,7 +11,7 @@ public class StudentResultResponse {
   private String studentName;
   private Long studentId;
   private String gender;
-  private String couseName;
+  private String courseName;
   private Long courseId;
   private int score;
   private long testTime;
@@ -40,12 +40,12 @@ public class StudentResultResponse {
     this.gender = gender;
   }
 
-  public String getCouseName() {
-    return couseName;
+  public String getCourseName() {
+    return courseName;
   }
 
-  public void setCouseName(String couseName) {
-    this.couseName = couseName;
+  public void setCourseName(String courseName) {
+    this.courseName = courseName;
   }
 
   public Long getCourseId() {

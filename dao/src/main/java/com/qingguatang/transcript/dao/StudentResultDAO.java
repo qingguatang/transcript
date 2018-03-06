@@ -1,6 +1,8 @@
 package com.qingguatang.transcript.dao;
 
 import com.qingguatang.transcript.dataobject.StudentResultDO;
+import com.qingguatang.transcript.dataobject.StudentResultResponse;
+import com.qingguatang.transcript.model.StudentResultQueryParam;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -9,6 +11,8 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface StudentResultDAO {
+
+    public List<StudentResultResponse> query(StudentResultQueryParam param);
 
     /**
      * 删除学生成绩

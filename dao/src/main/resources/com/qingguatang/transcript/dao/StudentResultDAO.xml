@@ -41,4 +41,29 @@
       testTime = #{testtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="query" parameterType="com.qingguatang.transcript.model.StudentResultQueryParam" resultType="com.qingguatang.transcript.dataobject.StudentResultResponse">
+    SELECT a.testTime as testTime,
+       a.score as score,
+       b.course_id as courseId,
+       b.course_name as courseName,
+       b.id  as studentId,
+       b.name as studentName,
+       b.gender
+      FROM ts_result a,
+           (
+    SELECT m.id as student_course_id, n.id as course_id, n.name as course_name, o.*
+      from ts_student_course m, ts_course n, ts_student o
+     where m.course_id= n.id
+       and m.student_id= o.id) b
+     <where>
+       a.student_course_id= b.student_course_id
+       <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(gender)"> and gender = #{gender}</if>
+       <if test="passed"> and score >= 60</if>
+       <if test="passed==false"> and score &lt;  60 </if>
+       <if test="courseId > 0"> and courseId = #{courseId}</if>
+     </where>
+    <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(orderByAttr) and @org.apache.commons.lang3.StringUtils@isNotBlank(sortOrder)">
+      ORDER BY #{orderByAttr} #{sortOrder}
+    </if>
+  </select>
 </mapper>
