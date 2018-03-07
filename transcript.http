@@ -1,0 +1,23 @@
+//查询数据
+GET http://localhost:8080
+    /api
+    /studentresults
+
+###
+
+//查询女生成绩
+GET http://localhost:8080
+    /api
+    /studentresults
+    ?gender=male
+
+###
+
+//排序数据,从大到小排序
+GET http://localhost:8080
+    /api
+    /studentresults
+    ?orderByAttr=score
+    &&sortOrder=asc
+
+###
