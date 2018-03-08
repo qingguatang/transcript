@@ -7,6 +7,12 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface StudentDAO {
 
+  /**
+   *  查询所有学生记录
+   * @return
+   */
+  List<StudentDO> selectAll();
+
   int delete(String id);
 
   /**

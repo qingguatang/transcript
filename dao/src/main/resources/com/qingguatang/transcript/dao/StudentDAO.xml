@@ -37,4 +37,9 @@
       gmt_modified = now()
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT * from ts_student
+  </select>
+
 </mapper>
