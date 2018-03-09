@@ -94,18 +94,18 @@ public class StudentResultDaoTest {
   @Test
   public void queryTest() {
     StudentResultQueryParam queryParam = new StudentResultQueryParam();
-    queryParam.setGender("男");
+   // queryParam.setGender("男");
     // 不及格的人数
     //queryParam.setPassed(false);
-    //queryParam.setOrderByAttr("score");
-    //queryParam.setSortOrder("asc");
+    queryParam.setOrderByAttr("score");
+    queryParam.setSortOrder("desc");
     List<StudentResultResponse> resultResponses = studentResultDAO.query(queryParam);
     //第一个分数大于第二个
-    // assertThat(resultResponses.get(0).getScore()).isGreaterThan(resultResponses.get(1).getScore());
+    assertThat(resultResponses.get(0).getScore()).isGreaterThan(resultResponses.get(1).getScore());
     //没有不及格人数
     // assertThat(resultResponses.size()).isEqualTo(0);
     //默认记录是2
-    assertThat(resultResponses.size()).isEqualTo(1);
+   // assertThat(resultResponses.size()).isEqualTo(1);
   }
 
 

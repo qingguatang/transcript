@@ -26,7 +26,7 @@ public class StudentResultApiControl implements StudentResultApi {
   @Autowired
   private StudentResultDAO studentResultDAO;
 
-  @RequestMapping(name = "/api/studentresults", produces = {"application/json"})
+  @RequestMapping(path = "/api/studentresults", produces = {"application/json"})
   @ResponseBody
   @Override
   public List<Result> query(StudentResultQueryParam param) {
