@@ -1,4 +1,4 @@
-//查询数据
+//获取所有成绩
 GET http://localhost:8080
     /api
     /studentresults
