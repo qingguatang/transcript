@@ -1,0 +1,24 @@
+//获取所有成绩
+GET http://localhost:8080
+    /api
+    /studentresults
+
+###
+
+//排序查询,从大小
+GET http://localhost:8080
+    /api
+    /studentresults
+    ?orderByAttr=score
+    &&sortOrder=asc
+
+###
+
+//查询女生
+GET http://localhost:8080
+    /api
+    /studentresults
+    ?gender=male
+
+###
+

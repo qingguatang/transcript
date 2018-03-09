@@ -1,6 +1,7 @@
 package com.qingguatang.transcript.control;
 
 import com.qingguatang.transcript.api.StudentApi;
+import com.qingguatang.transcript.model.ClassInfo;
 
 /**
  * @author joe
@@ -8,4 +9,8 @@ import com.qingguatang.transcript.api.StudentApi;
  */
 public class StudentApiControl implements StudentApi{
 
+  @Override
+  public ClassInfo queryForClassInfo() {
+    return null;
+  }
 }
