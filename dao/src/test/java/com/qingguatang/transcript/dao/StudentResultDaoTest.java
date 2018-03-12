@@ -71,7 +71,6 @@ public class StudentResultDaoTest {
     studentResultDO.setTesttime(new Date());
     studentResultDO.setStudentCourseId(studentCourseResultDO.getId());
     studentResultDAO.insert(studentResultDO);
-
   }
 
   @Test

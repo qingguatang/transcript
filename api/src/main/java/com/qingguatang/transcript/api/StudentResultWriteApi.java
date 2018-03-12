@@ -11,9 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 public interface StudentResultWriteApi {
 
   /**
-   * 上传服务 #TODO  需要添加Spring mvc依赖
+   * 上传服务
    * @return
    */
-  public UploadResult upload( MultipartFile file);
+  public UploadResult upload(MultipartFile multipartFile);
 
 }

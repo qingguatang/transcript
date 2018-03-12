@@ -36,9 +36,7 @@
     update ts_result
     set
       gmt_modified = now(),
-      student_course_id = #{studentCourseId,jdbcType=BIGINT},
-      score = #{score,jdbcType=DOUBLE},
-      testTime = #{testtime,jdbcType=TIMESTAMP}
+      score = #{score,jdbcType=DOUBLE}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="query" parameterType="com.qingguatang.transcript.model.StudentResultQueryParam" resultType="com.qingguatang.transcript.dataobject.StudentResultResponse">
@@ -48,7 +46,8 @@
        b.course_name as courseName,
        b.id  as studentId,
        b.name as studentName,
-       b.gender
+       b.gender,
+        a.id as studentResultId
       FROM ts_result a,
            (
     SELECT m.id as student_course_id, n.id as course_id, n.name as course_name, o.*

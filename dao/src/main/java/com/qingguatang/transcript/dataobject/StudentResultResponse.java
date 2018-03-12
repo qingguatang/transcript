@@ -15,6 +15,7 @@ public class StudentResultResponse {
   private Long courseId;
   private int score;
   private long testTime;
+  private long studentResultId;
 
   public String getStudentName() {
     return studentName;
@@ -70,5 +71,13 @@ public class StudentResultResponse {
 
   public void setTestTime(long testTime) {
     this.testTime = testTime;
+  }
+
+  public long getStudentResultId() {
+    return studentResultId;
+  }
+
+  public void setStudentResultId(long studentResultId) {
+    this.studentResultId = studentResultId;
   }
 }
