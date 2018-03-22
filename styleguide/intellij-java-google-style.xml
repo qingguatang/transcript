@@ -536,7 +536,7 @@
       </rules>
     </arrangement>
   </codeStyleSettings>
-  <Objective-C>
+  <Objective-demo.C>
     <option name="INDENT_NAMESPACE_MEMBERS" value="0" />
     <option name="INDENT_C_STRUCT_MEMBERS" value="2" />
     <option name="INDENT_CLASS_MEMBERS" value="2" />
@@ -549,8 +549,8 @@
     <option name="TEMPLATE_CALL_ARGUMENTS_ALIGN_MULTILINE" value="true" />
     <option name="ALIGN_INIT_LIST_IN_COLUMNS" value="false" />
     <option name="SPACE_BEFORE_SUPERCLASS_COLON" value="false" />
-  </Objective-C>
-  <Objective-C-extensions>
+  </Objective-demo.C>
+  <Objective-demo.C-extensions>
     <option name="GENERATE_INSTANCE_VARIABLES_FOR_PROPERTIES" value="ASK" />
     <option name="RELEASE_STYLE" value="IVAR" />
     <option name="TYPE_QUALIFIERS_PLACEMENT" value="BEFORE" />
@@ -577,7 +577,7 @@
       <pair source="cc" header="h" />
       <pair source="c" header="h" />
     </extensions>
-  </Objective-C-extensions>
+  </Objective-demo.C-extensions>
   <codeStyleSettings language="ObjectiveC">
     <option name="RIGHT_MARGIN" value="80" />
     <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="1" />
